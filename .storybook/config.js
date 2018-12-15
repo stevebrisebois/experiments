@@ -14,7 +14,7 @@ addDecorator((story) => (
 ))
 
 setOptions({
-  name: 'Geometry Experiments',
+  name: 'Experiments',
   url: '#'
 })
 

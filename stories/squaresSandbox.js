@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 
 import BoardStandalone from "../src/components/squaresSandbox/BoardStandalone";
 
-storiesOf('Squares', module)
+storiesOf('Squares Sandbox', module)
   .add(
     '72 x 37',
     () => (
