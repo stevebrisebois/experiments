@@ -15,7 +15,7 @@ export default class SquareTilesManager {
 
     this.onUpdate = this.onUpdate.bind(this);
     this.onCommit = this.onCommit.bind(this);
-    this.onCancel = this.onCancel.bind(this);
+    // this.onCancel = this.onCancel.bind(this);
   }
 
   private cols: number;
@@ -36,7 +36,7 @@ export default class SquareTilesManager {
   private side: number;
 
   public beginCreate(event: any): void {
-    event.preventDefault();
+    // event.preventDefault();
 
     this.target = event.target;
 
@@ -53,7 +53,7 @@ export default class SquareTilesManager {
   }
 
   private onUpdate(event: any): void {
-    event.preventDefault();
+    // event.preventDefault();
 
     var pos: { col: number, row: number } = this.getPosition(event);
 
@@ -63,7 +63,7 @@ export default class SquareTilesManager {
     this.col = Math.min(this.col0, pos.col);
     this.row = Math.min(this.row0, pos.row);
 
-    var side = Math.min(colSpan, rowSpan) + 1;
+    var side = Math.max(colSpan, rowSpan) + 1;
 
     var overflowCols: number = Math.max(0, this.col + side - this.cols);
     var overflowRows: number = Math.max(0, this.row + side - this.rows);
@@ -80,20 +80,22 @@ export default class SquareTilesManager {
     this.onPreviewTile(null);
   }
 
+  /*
   private onCancel(event: any): void {
     this.toggleWindowListeners(false);
     this.onPreviewTile(null);
   }
+  */
 
   private toggleWindowListeners(value: boolean): void {
-    window.document.removeEventListener("mousemove", this.onUpdate);
-    window.document.removeEventListener("mouseup", this.onCommit);
-    window.document.removeEventListener("mouseleave", this.onCancel);
+    window.removeEventListener("mousemove", this.onUpdate);
+    window.removeEventListener("mouseup", this.onCommit);
+    //window.document.removeEventListener("mouseleave", this.onCancel);
 
     if (value) {
-      window.document.addEventListener("mousemove", this.onUpdate);
-      window.document.addEventListener("mouseup", this.onCommit);
-      window.document.addEventListener("mouseleave", this.onCancel);
+      window.addEventListener("mousemove", this.onUpdate);
+      window.addEventListener("mouseup", this.onCommit);
+      //window.document.addEventListener("mouseleave", this.onCancel);
     }
   }
 
