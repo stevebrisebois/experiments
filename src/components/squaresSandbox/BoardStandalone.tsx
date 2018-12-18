@@ -46,7 +46,7 @@ export default class BoardStandalone extends React.Component<IBoardStandalonePro
       return !this.tilesIntersects(tile, newTile);
     });
 
-    this.setState(Object.assign(this.state, { tiles: tiles.concat([newTile]) }));
+    this.setState((Object as any).assign(this.state, { tiles: tiles.concat([newTile]) }));
   }
 
   private tilesIntersects(t1: ISquareTile, t2: ISquareTile): boolean {

@@ -164,7 +164,7 @@ export default class Board extends React.Component<IBoardProps, IBoardState> {
    * @param tile
    */
   private previewTile(tile: ISquareTile): void {
-    this.setState(Object.assign(this.state, { tempTile: tile }));
+    this.setState((Object as any).assign(this.state, { tempTile: tile }));
   }
 
   /**
